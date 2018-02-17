@@ -1,7 +1,6 @@
 package dao;
 
 import beans.User;
-
 import java.util.List;
 
 public interface UserDAOInter {
