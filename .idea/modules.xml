@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/myexpensesdb/myexpensesdb.iml" filepath="$PROJECT_DIR$/myexpensesdb/myexpensesdb.iml" />
       <module fileurl="file://$PROJECT_DIR$/myexpensesgit.iml" filepath="$PROJECT_DIR$/myexpensesgit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myexpensesgui/myexpensesgui.iml" filepath="$PROJECT_DIR$/myexpensesgui/myexpensesgui.iml" />
     </modules>
   </component>
 </project>
