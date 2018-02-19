@@ -14,4 +14,6 @@ public interface UserDAOInter {
     public abstract boolean delete(int id);
 
     public abstract boolean update(int id, User user);
+    
+    public abstract List<User> selectAll();
 }

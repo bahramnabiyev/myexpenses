@@ -18,10 +18,13 @@ public class UserDAOImpl extends DBUtility implements UserDAOInter {
         try {
             connection = connect();
 
-            String sql = "insert into user(name,surname) values(?,?)";
+            String sql = "insert into user(name,surname,username,password,role_id, reg_date) values(?,?,?,?,?,now())";
             PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, user.getName());
             stmt.setString(2, user.getSurname());
+            stmt.setString(3, user.getUsername());
+            stmt.setString(4, user.getPassword());
+            stmt.setInt(5, user.getRoleId());
 
             int result = stmt.executeUpdate();
             if(result > 0) {
@@ -145,6 +148,40 @@ public class UserDAOImpl extends DBUtility implements UserDAOInter {
     }
 
 
+    @Override
+    public List<User> selectAll() {
+        Connection connection = null;
+        List<User> list = new ArrayList<>();
+        try {
+            connection = connect();
+
+            String sql = "select * from user";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                int userId = rs.getInt("id");
+                String userName = rs.getString("name");
+                String userSurname = rs.getString("surname");
+                String username = rs.getString("username");
+                int roleId = rs.getInt("role_id");
+
+                User user = new User();
+                user.setId(userId);
+                user.setName(userName);
+                user.setSurname(userSurname);
+                user.setUsername(username);
+                user.setRoleId(roleId);
+
+                list.add(user);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            close(connection);
+        }
+        return list;
+    }
     public static int getInsertId(PreparedStatement stmt) throws Exception{
         ResultSet generatedKeys = stmt.getGeneratedKeys();
 
