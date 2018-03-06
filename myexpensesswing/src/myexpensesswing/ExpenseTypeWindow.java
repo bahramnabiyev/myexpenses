@@ -11,11 +11,11 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
-public class Expense_Type extends javax.swing.JFrame {
+public class ExpenseTypeWindow extends javax.swing.JFrame {
 
     ExpenseTypeDAOInter typedao = new ExpenseTypeDAOImpl();
     
-    public Expense_Type() {
+    public ExpenseTypeWindow() {
         initComponents();
         redo();
     }
@@ -236,7 +236,7 @@ public class Expense_Type extends javax.swing.JFrame {
        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Expense_Type().setVisible(true);
+                new ExpenseTypeWindow().setVisible(true);
             }
         });
     }
