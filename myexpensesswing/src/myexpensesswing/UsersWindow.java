@@ -6,23 +6,19 @@
 package myexpensesswing;
 
 import beans.User;
-import com.mysql.jdbc.ResultSetMetaData;
-import dao.UserDAOImpl;
-import dao.UserDAOInter;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import dao.impl.UserDAOImpl;
+import dao.inter.UserDAOInter;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 
 /**
  *
  * @author sarkhanrasullu
  */
 public class UsersWindow extends javax.swing.JFrame {
- UserDAOInter userDao = new UserDAOImpl();
+    UserDAOInter userDao = new UserDAOImpl();
     /**
      * Creates new form Main
      */

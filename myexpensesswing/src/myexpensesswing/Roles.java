@@ -2,20 +2,20 @@
 package myexpensesswing;
 
 import beans.User;
-import dao.UserDAOImpl;
-import dao.UserDAOInter;
+import dao.impl.UserRoleDAOImpl;
+import dao.inter.UserRoleDAOInter;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import beans.UserRole;
 
 /**
  *
  * @author User
  */
 public final class Roles extends javax.swing.JFrame {
-UserDAOInter userDao = new UserDAOImpl();
+    UserRoleDAOInter userRoleDao = new UserRoleDAOImpl();
     /**
      * Creates new form Roles
      */
@@ -37,11 +37,11 @@ UserDAOInter userDao = new UserDAOImpl();
 
     // data of the table
         Vector<Vector<Object>> setrlerToplusu = new Vector<>();
-        List<User> list = userDao.selectRoles();
+        List<UserRole> list = userRoleDao.selectRoles();
         list.stream().map((u) -> {
             Vector<Object> setr = new Vector<>();
-            setr.add(u.getRoleId());
-            setr.add(u.getRoleName());
+            setr.add(u.getId());
+            setr.add(u.getName());
         return setr;
     }).forEachOrdered((setr) -> {
         setrlerToplusu.add(setr);
@@ -172,10 +172,11 @@ UserDAOInter userDao = new UserDAOImpl();
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
         String name = roleName.getText();
-        User user = new User();
-        user.setRoleName(name);
+       
+        UserRole userRole = new UserRole();
+        userRole.setName(name);
         
-        userDao.insertRole(user);
+        userRoleDao.insertRole(userRole);
         refreshTable();
     }                                        
 
@@ -189,7 +190,7 @@ UserDAOInter userDao = new UserDAOImpl();
       if(answer == JOptionPane.OK_OPTION){
          int selectedRow= jTable1.getSelectedRow();
          int id = Integer.valueOf(String.valueOf(jTable1.getModel().getValueAt(selectedRow, 0)));
-         userDao.deleteRole(id);
+         userRoleDao.deleteRole(id);
          refreshTable();
       }
     }                                        
@@ -198,10 +199,11 @@ UserDAOInter userDao = new UserDAOImpl();
             String ids = roleId.getText();
             String name = roleName.getText();
             int id = Integer.parseInt(ids);
-            User user = new User();
-            user.setRoleName(name);
-            user.setRoleId(id);
-            userDao.updateRole(id, user);
+            
+            UserRole userRole = new UserRole();
+            userRole.setName(name);
+            userRole.setId(id);
+            userRoleDao.updateRole(id, userRole);
             refreshTable();
                     
     }                                        

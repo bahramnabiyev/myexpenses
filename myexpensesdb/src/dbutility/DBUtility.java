@@ -2,6 +2,8 @@ package dbutility;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DBUtility implements DBUtilityInter {
@@ -26,6 +28,16 @@ public class DBUtility implements DBUtilityInter {
             connection.close();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+    
+     public static int getInsertId(PreparedStatement stmt) throws Exception {
+        ResultSet generatedKeys = stmt.getGeneratedKeys();
+
+        if (generatedKeys.next()) {
+            return generatedKeys.getInt(1);
+        } else {
+            return -1;
         }
     }
 }

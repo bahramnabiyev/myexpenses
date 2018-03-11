@@ -1,4 +1,4 @@
-package dao;
+package dao.inter;
 
 import beans.User;
 import java.util.List;
@@ -17,15 +17,7 @@ public interface UserDAOInter {
     
     public abstract List<User> selectAll();
     
+    public abstract int logIn(String username, String password);
     
-    //About Roles
-    
-    public abstract List<User> selectRoles();
-    
-    public abstract int insertRole(User role);
-    
-    public abstract boolean deleteRole(int id);
-    
-    public abstract boolean updateRole (int id, User role);
-    
+    public int signUp(User user);
 }

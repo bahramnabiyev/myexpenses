@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package dao.impl;
 
 import beans.ExpenseType;
 import beans.User;
-import static dao.UserDAOImpl.getInsertId;
+import dao.inter.ExpenseTypeDAOInter;
+import static dao.impl.UserRoleDAOImpl.getInsertId;
 import dbutility.DBUtility;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -7,8 +7,9 @@ package myexpensesswing;
 
 import beans.TextFieldHelper;
 import beans.User;
-import dao.UserDAOImpl;
-import dao.UserDAOInter;
+import dao.impl.UserDAOImpl;
+import dao.impl.UserRoleDAOImpl;
+import dao.inter.UserDAOInter;
 
 /**
  *

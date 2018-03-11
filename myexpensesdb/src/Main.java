@@ -1,6 +1,6 @@
 import beans.User;
-import dao.UserDAOImpl;
-import dao.UserDAOInter;
+import dao.impl.UserRoleDAOImpl;
+import dao.inter.UserDAOInter;
 
 public class Main {
 
