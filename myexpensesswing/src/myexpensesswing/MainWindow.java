@@ -32,6 +32,7 @@ public class MainWindow extends javax.swing.JFrame {
         mnUsers = new javax.swing.JMenu();
         mnExpenses = new javax.swing.JMenu();
         mnExpenseType = new javax.swing.JMenu();
+        mnExpenseCategory = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,12 +41,12 @@ public class MainWindow extends javax.swing.JFrame {
 
         mnUsers.setText("Users");
         mnUsers.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                mnUsersMenuSelected(evt);
             }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                mnUsersMenuSelected(evt);
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
         });
         mnUsers.addActionListener(new java.awt.event.ActionListener() {
@@ -60,12 +61,12 @@ public class MainWindow extends javax.swing.JFrame {
 
         mnExpenseType.setText("Expense Types");
         mnExpenseType.addMenuListener(new javax.swing.event.MenuListener() {
-            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                mnExpenseTypeMenuSelected(evt);
             }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
-            public void menuSelected(javax.swing.event.MenuEvent evt) {
-                mnExpenseTypeMenuSelected(evt);
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
         });
         mnExpenseType.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +80,18 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         menu.add(mnExpenseType);
+
+        mnExpenseCategory.setText("Expense Category");
+        mnExpenseCategory.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                mnExpenseCategoryMenuSelected(evt);
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+        });
+        menu.add(mnExpenseCategory);
 
         setJMenuBar(menu);
 
@@ -118,6 +131,13 @@ public class MainWindow extends javax.swing.JFrame {
         
     }//GEN-LAST:event_mnExpenseTypeKeyPressed
 
+    private void mnExpenseCategoryMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_mnExpenseCategoryMenuSelected
+        this.setVisible(false);
+        new ExpenseCategoryWindow().setVisible(true);
+    }//GEN-LAST:event_mnExpenseCategoryMenuSelected
+
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -157,6 +177,7 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar menu;
+    private javax.swing.JMenu mnExpenseCategory;
     private javax.swing.JMenu mnExpenseType;
     private javax.swing.JMenu mnExpenses;
     private javax.swing.JMenu mnUsers;
