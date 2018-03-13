@@ -11,9 +11,17 @@ public class User {
     private String username;
     private String password;
     private int roleId;
+    private String roleName;
 
 
     public User() {
+    }
+
+    public User(String name, String surname, String username, String password) {
+        this.name = name;
+        this.surname = surname;
+        this.username = username;
+        this.password = password;
     }
 
     public User(String name, String surname) {
@@ -75,6 +83,17 @@ public class User {
     public void setRoleId(int roleId) {
         this.roleId = roleId;
     }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+    
+    
+    
 
     @Override
     public String toString() {

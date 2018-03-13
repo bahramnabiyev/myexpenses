@@ -1,4 +1,4 @@
-package dao;
+package dao.inter;
 
 import beans.User;
 import java.util.List;
@@ -16,4 +16,8 @@ public interface UserDAOInter {
     public abstract boolean update(int id, User user);
     
     public abstract List<User> selectAll();
+    
+    public abstract int logIn(String username, String password);
+    
+    public int signUp(User user);
 }

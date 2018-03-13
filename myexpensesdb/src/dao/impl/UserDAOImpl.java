@@ -1,10 +1,12 @@
-package dao;
+package dao.impl;
 
 import beans.User;
+import dao.inter.UserDAOInter;
 import dbutility.DBUtility;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +26,7 @@ public class UserDAOImpl extends DBUtility implements UserDAOInter {
             stmt.setString(2, user.getSurname());
             stmt.setString(3, user.getUsername());
             stmt.setString(4, user.getPassword());
-            stmt.setInt(5, user.getRoleId());
+            stmt.setInt(5, 2);
 
             int result = stmt.executeUpdate();
             if(result > 0) {
@@ -191,5 +193,68 @@ public class UserDAOImpl extends DBUtility implements UserDAOInter {
             return -1;
         }
     }
+@Override
+    public int logIn(String username, String password) {
+        Connection connection = null;
+        User user = new User();
+        
+        try {
+            connection = connect();
+            String sql = "SELECT * FROM user WHERE username = ? and password = ? ";
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.setString(2, password);
 
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                
+                user.setId(rs.getInt(1));
+                user.setName(rs.getString(2));
+                user.setSurname(rs.getString(3));
+                user.setUsername(rs.getString(4));
+                user.setPassword(rs.getString(5));
+                user.setRoleId(rs.getInt(9));
+               
+            }
+
+            return user.getRoleId();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close(connection);
+        }
+        return user.getRoleId();
+    }
+    @Override
+    public int signUp(User user) {//Ecemi
+        Connection connection = null;
+        try {
+            connection = connect();
+
+            String sql = "insert into user(name,surname,username,password,role_id, reg_date) values(?,?,?,?,?,now())";
+            PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            stmt.setString(1, user.getName());
+            stmt.setString(2, user.getSurname());
+            stmt.setString(3, user.getUsername());
+            stmt.setString(4, user.getPassword());
+            stmt.setInt(5, 2);
+
+            int result = stmt.executeUpdate();
+            if(result > 0) {
+                int insertedId =  getInsertId(stmt);
+                user.setId(insertedId);
+                return insertedId;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }finally {
+            close(connection);
+        }
+        return 0;
+    }
 }
