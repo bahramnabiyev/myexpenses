@@ -1,4 +1,4 @@
-package dao;
+package dao.inter;
 
 import beans.User;
 import java.util.List;

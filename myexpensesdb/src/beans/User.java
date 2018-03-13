@@ -11,6 +11,7 @@ public class User {
     private String username;
     private String password;
     private int roleId;
+    private String roleName;
 
 
     public User() {
@@ -82,6 +83,17 @@ public class User {
     public void setRoleId(int roleId) {
         this.roleId = roleId;
     }
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+    
+    
+    
 
     @Override
     public String toString() {

@@ -57,6 +57,20 @@ public class MainWindow extends javax.swing.JFrame {
         menu.add(mnUsers);
 
         mnExpenses.setText("Expenses");
+        mnExpenses.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                mnExpensesMenuSelected(evt);
+            }
+        });
+        mnExpenses.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnExpensesActionPerformed(evt);
+            }
+        });
         menu.add(mnExpenses);
 
         mnExpenseType.setText("Expense Types");
@@ -110,11 +124,11 @@ public class MainWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mnExpenseTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnExpenseTypeActionPerformed
-        
+
     }//GEN-LAST:event_mnExpenseTypeActionPerformed
 
     private void mnUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnUsersActionPerformed
-       
+
     }//GEN-LAST:event_mnUsersActionPerformed
 
     private void mnExpenseTypeMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_mnExpenseTypeMenuSelected
@@ -123,12 +137,12 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_mnExpenseTypeMenuSelected
 
     private void mnUsersMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_mnUsersMenuSelected
-       this.setVisible(false);
-       new UsersWindow().setVisible(true);
+        this.setVisible(false);
+        new UsersWindow().setVisible(true);
     }//GEN-LAST:event_mnUsersMenuSelected
 
     private void mnExpenseTypeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mnExpenseTypeKeyPressed
-        
+
     }//GEN-LAST:event_mnExpenseTypeKeyPressed
 
     private void mnExpenseCategoryMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_mnExpenseCategoryMenuSelected
@@ -136,8 +150,16 @@ public class MainWindow extends javax.swing.JFrame {
         new ExpenseCategoryWindow().setVisible(true);
     }//GEN-LAST:event_mnExpenseCategoryMenuSelected
 
-    
-    
+    private void mnExpensesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnExpensesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnExpensesActionPerformed
+
+    private void mnExpensesMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_mnExpensesMenuSelected
+        // TODO add your handling code here:
+        this.setVisible(false);
+        new ExpenseWindow().setVisible(true);
+    }//GEN-LAST:event_mnExpensesMenuSelected
+
     /**
      * @param args the command line arguments
      */

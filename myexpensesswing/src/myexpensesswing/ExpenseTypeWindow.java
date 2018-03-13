@@ -2,8 +2,8 @@
 package myexpensesswing;
 
 import beans.ExpenseType;
-import dao.ExpenseTypeDAOImpl;
-import dao.ExpenseTypeDAOInter;
+import dao.impl.ExpenseTypeDAOImpl;
+import dao.inter.ExpenseTypeDAOInter;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JOptionPane;

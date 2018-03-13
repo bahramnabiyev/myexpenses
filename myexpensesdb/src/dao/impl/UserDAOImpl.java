@@ -1,6 +1,7 @@
-package dao;
+package dao.impl;
 
 import beans.User;
+import dao.inter.UserDAOInter;
 import dbutility.DBUtility;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

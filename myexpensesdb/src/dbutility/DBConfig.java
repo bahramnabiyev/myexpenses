@@ -6,11 +6,10 @@ class DBConfig {
     private static String port = "3306";
     private static String dbName = "expense";
     private static String username = "root";
-    private static String password = "nicat2606";
+    private static String password = "12345";
 
     public static String getConnectionName(){
-        String s = "jdbc:mysql://"+DBConfig.getIp()+":"+DBConfig.getPort()+"/"+DBConfig.getDbName();
-        //System.out.println(s);
+        String s = "jdbc:mysql://"+DBConfig.getIp()+":"+DBConfig.getPort()+"/"+DBConfig.getDbName()+"?useSSL=false";
         return s;
     }
 
