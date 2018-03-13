@@ -4,13 +4,12 @@ class DBConfig {
 
     private static String ip = "localhost";
     private static String port = "3306";
-    private static String dbName = "myexpense";
+    private static String dbName = "expense";
     private static String username = "root";
     private static String password = "12345";
 
     public static String getConnectionName(){
         String s = "jdbc:mysql://"+DBConfig.getIp()+":"+DBConfig.getPort()+"/"+DBConfig.getDbName()+"?useSSL=false";
-        System.out.println(s);
         return s;
     }
 
